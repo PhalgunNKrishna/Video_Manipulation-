@@ -11,20 +11,20 @@ public class VideoFileIO {
         String outputFilePath = "C:/Users/Charles Arellano/Documents/GitHub/Video_Manipulation-/Output/OutputVid.mp4";
 
         try (
-        FileInputStream fin = new FileInputStream(new File(sourceFilePath)); FileOutputStream fout = new FileOutputStream(new File(outputFilePath));
+            FileInputStream fin = new FileInputStream(new File(sourceFilePath)); FileOutputStream fout = new FileOutputStream(new File(outputFilePath));
         ) {
 
-        byte[] buffer = new byte[BUFFERSIZE];
+            byte[] buffer = new byte[BUFFERSIZE];
 
-        while (fin.available() != 0) {
-        fin.read(buffer);
-        fout.write(buffer);
-        }
+            while (fin.available() != 0) {
+                fin.read(buffer);
+                fout.write(buffer);
+            }
 
         } catch (Exception e) {
-        System.out.println("Something went wrong! Reason: " + e.getMessage());
+            System.out.println("Something went wrong! Reason: " + e.getMessage());
         }
     }
-    
+
 
 }
