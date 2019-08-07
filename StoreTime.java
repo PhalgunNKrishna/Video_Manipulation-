@@ -2,17 +2,20 @@ import java.util.*;
 
 public class StoreTime {
 
-    private int minute;
-    private int second;
-    private int milisecond;
-    private List<Integer> list;
+    private ArrayList<ArrayList<String>> list;
 
-    // CONSTRUCTOR FUNCRTION:
-    public StoreTime(int start_minute, int start_second) {
-        this.minute = start_minute;
-        this.second = start_second;
-        this.list = new ArrayList<Integer>();
+    // CONSTRUCTOR FUNCTION:
+    public StoreTime () {
+        list = new ArrayList<ArrayList<String>>();
     }
+
+
+    // public StoreTime(int start_hour, int start_minute, int start_second) {
+    //     this.minute = start_minute;
+    //     this.second = start_second;
+    //     this.hour = start_hour;
+    //     this.list = new ArrayList<Integer>();
+    // }
 
     private int SecondConvert(int min, int sec) {
         int ret;
@@ -20,6 +23,15 @@ public class StoreTime {
         return ret;
     }
 
-    public void 
+    public void addToArr(ArrayList<String> arr) {
+        list.add(arr);
+    }
+
+    public void printArr() {
+        for (int counter = 0; counter < list.size(); counter++) { 		      
+            System.out.println(list.get(counter)); 		
+        }  
+    }
+
 }
 
