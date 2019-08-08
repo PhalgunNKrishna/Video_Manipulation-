@@ -29,7 +29,7 @@ public class StoreTime {
 
     public void printArr() {
         for (int counter = 0; counter < list.size(); counter++) { 		      
-            System.out.println(list.get(counter)); 		
+            System.out.println(counter + " " + list.get(counter)); 		
         }  
     }
 

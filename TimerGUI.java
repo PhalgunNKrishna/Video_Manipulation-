@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,9 +22,8 @@ import java.time.*;
 
 public class TimerGUI extends JFrame{
     // need to return something
-    String timeStr;
-    StringConcat objConcat = new StringConcat();
     JButton submit = new JButton("Submit");
+    StoreTime app = new StoreTime();
 
     public void TimeGUI() {
         
@@ -46,10 +46,9 @@ public class TimerGUI extends JFrame{
         frame.getContentPane().add(empty);
         frame.getContentPane().add(enter);
 
-        String t1 = textField(frame, submit, enter, empty);
-        String t2 = textField(frame, submit, enter, empty);
+        textField(frame, submit, enter, empty);
+        textField(frame, submit, enter, empty);
 
-        
 
         submit.setBounds(10, 10, 100, 100);
 
@@ -78,7 +77,7 @@ public class TimerGUI extends JFrame{
         return frame;
     }
     
-    public String textField(JFrame frame, JButton submit, JLabel enter, JLabel empty) {
+    public void textField(JFrame frame, JButton submit, JLabel enter, JLabel empty) {
         // Initialize variables
         JTextField textfield1;
         
@@ -90,24 +89,27 @@ public class TimerGUI extends JFrame{
 
             public void actionPerformed(ActionEvent arg0) {
                 try {
-                    timeStr = textfield1.getText();
+                    String timeStr = textfield1.getText();
                     LocalTime.parse(timeStr);
                     System.out.println("Valid time string: " + timeStr);
                     enter.setText("");
                     empty.setText("Valid Time");
 
+                    StringConcat cat = new StringConcat();
+                    ArrayList<String> li = cat.Split(timeStr, ":");
+
+                    
+                    app.addToArr(li);
+                    app.printArr();
+                    
                 } catch (DateTimeParseException | NullPointerException e) {
-                    timeStr = textfield1.getText();
+                    String timeStr = textfield1.getText();
                     System.out.println("Invalid time string: " + timeStr);
                     enter.setText("");
                     empty.setText("Invalid Time");
                 }
             }
         });
-
-        
-        return TimerGUI.this.timeStr;
-
 
     }
 }
