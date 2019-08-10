@@ -40,7 +40,7 @@ public class TimerGUI extends JFrame{
         JLabel enterTime, empty, enterRange;
 
         enterTime = new JLabel();
-        enterTime.setText("Enter Time:");
+        enterTime.setText("Enter Time (HH:MM:SS):");
         enterTime.setBounds(10, 10, 10, 100);
 
         // empty
@@ -48,7 +48,7 @@ public class TimerGUI extends JFrame{
         empty.setBounds(10, 110, 100, 100);
 
         enterTime = new JLabel();
-        enterTime.setText("Enter Time:");
+        enterTime.setText("Enter Time(HH:MM:SS):");
         enterTime.setBounds(10, 10, 100, 100);
 
         frame.getContentPane().add(empty);
@@ -116,13 +116,34 @@ public class TimerGUI extends JFrame{
 
                     StringConcat cat = new StringConcat();
                     ArrayList<String> li = cat.Split(timeStr, ":");
-
                     
                     app.addToArr(li);
                     app.printArr();
-
                     process.setBounds(10, 10, 100, 100);
                     frame.getContentPane().add(process);
+
+                    //temp variables
+
+                    String startTime = "00:00:05";
+                    String lengthTime = "00:00:10";
+                    String fileName = "sampleVideo.mp4";
+
+                    process.addActionListener(new ActionListener() {
+
+                        public void actionPerformed(ActionEvent arg0) {
+                            System.out.println("\nRUNNING:");
+                            try {
+                                System.out.println("**********");
+                                String command = "ffmpeg -y -ss "+startTime+" -i "+fileName+" -to "+lengthTime+" -c copy output.mp4";
+                                Runtime.getRuntime().exec(command);
+                                System.out.println(command);
+                            } catch (Exception e) {
+                                System.out.println("Didn't work");
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    
                     
                 } catch (DateTimeParseException | NullPointerException e) {
                     String timeStr = textfield1.getText();
