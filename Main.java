@@ -26,4 +26,4 @@ public class Main {
 
             // Use the time to cut the video 
         }
-    }
+}
