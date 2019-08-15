@@ -120,28 +120,37 @@ public class TimerGUI extends JFrame {
 
                     //temp variables
 
-                    String startTime = list.get(0).get(0);
-                    String lengthTime = list.get(0).get(2);
-                    int length = Integer.parseInt(lengthTime) * 2;
-                    String lengthTimeCal = Integer.toString(length);
+                    
                     String fileName = "sampleVideo.mp4";
-                    System.out.println("START " + startTime + " LENGTH " + lengthTimeCal);
+                    
                     process.addActionListener(new ActionListener() {
 
                         public void actionPerformed(ActionEvent arg0) {
 
                             // peform for loop in here for the size of the arraylists
-
+                            int listSize = list.size();
+                            String fileNameTrim = fileName.substring(0, fileName.lastIndexOf('.'));
                             System.out.println("\nRUNNING:");
                             try {
-                                System.out.println("**********");
-                                String command = "ffmpeg -y -ss " +
+                                for (int i = 0; i < listSize; i++)
+                                {
+                                    String startTime = list.get(i).get(0);
+                                    String lengthTime = list.get(i).get(2);
+                                    int length = Integer.parseInt(lengthTime) * 2;
+                                    String lengthTimeCal = Integer.toString(length);
+                                    System.out.println("START " + startTime + " LENGTH " + lengthTimeCal);
+                                    System.out.println("**********");
+                                    String command = "ffmpeg -y -ss " +
                                     startTime + " -i " +
                                     fileName + " -to " +
                                     lengthTimeCal +
-                                    " -c copy Output/output.mp4";
-                                Runtime.getRuntime().exec(command);
-                                System.out.println(command);
+                                    " -c copy Output/" +
+                                    fileNameTrim + i +
+                                    ".mp4";
+                                    Runtime.getRuntime().exec(command);
+                                    System.out.println(command);
+                                }
+                                
                             } catch (Exception e) {
                                 System.out.println("Didn't work");
                                 e.printStackTrace();
