@@ -80,7 +80,7 @@ public class TimerGUI extends JFrame {
         // set frame parameters
         frame.getContentPane().setLayout(new FlowLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 500);
+        frame.setSize(1000, 200);
 
         return frame;
     }
