@@ -1,4 +1,7 @@
-# Video_Manipulation-
+# Video_Manipulation-  
+
+By Phalgun Krishna and Charles Arellano   
+
 A side project that can split video files at a desired time stamp and concatenate multiple video files together. This project includes a GUI for users to easily input their desired videos and time stamps. Created by Phalgun Krishna and Charles Arellano
 
 ## Instructions to Run Project
